@@ -1,6 +1,7 @@
 import { Form, useActionData, Link } from "react-router-dom";
 
-import loginIcons from "../../assests/signin.gif";
+import loginIcons from "/signin.gif";
+
 import Input from "../UI/Input";
 
 export default function Login() {

@@ -11,20 +11,26 @@ import "react-toastify/dist/ReactToastify.css";
 // Lazy loaded components
 const LazyHome = React.lazy(() => import("./pages/Home"));
 const LazyProfile = React.lazy(() => import("./pages/Profile"));
+const LazyHomeBanners = React.lazy(() => import("./pages/HomeBanners"));
 const LazySignup = React.lazy(() => import("./pages/Signup"));
 const LazyLogin = React.lazy(() => import("./pages/Login"));
 const LazyUsersTable = React.lazy(() => import("./pages/UserTable"));
 const LazyProductsTable = React.lazy(() => import("./pages/ProductTable.jsx"));
+const LazyProducts = React.lazy(() => import("./pages/Products.jsx"));
 
 import { action as editAction } from "./pages/Profile.jsx";
 import { action as signupAction } from "./pages/Signup";
+import homeLoader from "./components/Home/homeLoader.js";
 
 const Spinner = () => (
   <div className="flex items-center justify-center min-h-screen">
     <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
   </div>
 );
-
+const combinedLoader = async () => {
+  const [user, homeData] = await Promise.all([userFetch(), homeLoader()]);
+  return { user, homeData };
+};
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +45,7 @@ const router = createBrowserRouter([
             <LazyHome />
           </React.Suspense>
         ),
+        loader: homeLoader,
       },
       {
         path: "/profile",
@@ -49,6 +56,15 @@ const router = createBrowserRouter([
         ),
         loader: userFetch,
         action: editAction,
+      },
+      {
+        path: "/homeBanner",
+        element: (
+          <React.Suspense fallback={<Spinner />}>
+            <LazyHomeBanners />
+          </React.Suspense>
+        ),
+        loader: combinedLoader,
       },
 
       {
@@ -72,13 +88,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/allProducts",
-        
+
         element: (
           <React.Suspense fallback={<Spinner />}>
             <LazyProductsTable />
           </React.Suspense>
         ),
         loader: userFetch,
+      },
+      {
+        path: "/products",
+        element: (
+          <React.Suspense fallback={<Spinner />}>
+            <LazyProducts />
+          </React.Suspense>
+        ),
       },
       {
         path: "/logout",

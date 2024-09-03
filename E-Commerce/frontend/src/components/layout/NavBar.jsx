@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Link, useRouteLoaderData } from "react-router-dom";
-import Logo from "../../assests/logo.webp";
+import Logo from "/logo.webp";
 import { GrSearch } from "react-icons/gr";
 import { FaRegUserCircle, FaShoppingCart } from "react-icons/fa";
 

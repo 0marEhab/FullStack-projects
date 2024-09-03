@@ -28,8 +28,17 @@ const summaryApi = {
   allProducts: {
     url: `${urlDomain}/api/getAllProducts`,
   },
-  getCategories:{
-     url: `${urlDomain}/api/getAllCategories`
+  getCategories: {
+    url: `${urlDomain}/api/getAllCategories`,
+  },
+  getNewArrival: {
+    url: `${urlDomain}/api/getNewArrival`,
+  },
+  getHomeBanners: {
+    url: `${urlDomain}/api/getBanner`,
+  },
+  addBanners: {
+    url: `${urlDomain}/api/storeBanner`,
   },
 };
 

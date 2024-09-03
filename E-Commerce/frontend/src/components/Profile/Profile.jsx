@@ -5,10 +5,11 @@ import { useDispatch } from "react-redux";
 import { editSlice } from "../../store/editSlice";
 import EditModal from "../Modal/EditModal";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLoaderData } from "react-router-dom";
 import { tokenLoader } from "../../util/auth";
 
-const Profile = ({ user }) => {
+const Profile = () => {
+  const user = useLoaderData();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -57,7 +58,7 @@ const Profile = ({ user }) => {
           />
         </div>
         <div className="w-full md:w-[800px] flex justify-center flex-col h-auto md:h-[500px] bg-slate-300 rounded-xl p-5 md:p-0">
-          <h1 className="text-3xl md:text-5xl m-5 md:m-10 font-bold">
+          <h1 className="font-Anton text-3xl md:text-5xl m-5 md:m-10 font-bold">
             Profile
           </h1>
           <div className="flex items-center flex-col h-full">

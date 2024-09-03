@@ -74,7 +74,7 @@ export default function ProductsTable({ products, category }) {
                 <td className="px-6 py-4">{product.stock || "N/A"}</td>
                 <td className="px-6 py-4">{product.category.name || "N/A"}</td>
                 <td className="px-6 py-4">
-                <img
+                  <img
                     className=" rounded-full w-[60px] h-[60px]  md:w-[100px] md:h-[100px]"
                     src={product.image || "N/A"}
                     alt=""
@@ -85,7 +85,7 @@ export default function ProductsTable({ products, category }) {
                     X
                   </button>
                   <button className="focus:outline-none flex  items-center justify-center  text-white bg-red-700 hover:bg-red-800 font-medium rounded-full text-sm w-[40px] h-[40px] me-2 mb-2">
-                  <MdModeEdit />
+                    <MdModeEdit />
                   </button>
                 </td>
               </tr>
@@ -96,4 +96,3 @@ export default function ProductsTable({ products, category }) {
     </>
   );
 }
-

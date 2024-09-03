@@ -2,7 +2,7 @@ import { Form, useActionData } from "react-router-dom";
 import { useState } from "react";
 import imageTobase64 from "../../helper/profile-Image";
 
-import loginIcons from "../../assests/signin.gif";
+import loginIcons from "/signin.gif";
 import Input from "../UI/Input";
 
 export default function Signup() {

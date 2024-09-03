@@ -36,11 +36,9 @@ export async function action({ request }) {
 }
 
 export default function ProfilePage() {
-  const user = useLoaderData();
-
   return (
     <>
-      <Profile user={user} />
+      <Profile />
     </>
   );
 }

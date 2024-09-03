@@ -9,6 +9,9 @@ export default {
         Playfair: ["Playfair"],
         Roboto: ["Roboto"],
       },
+      screens: {
+        "2xl": "2499px", // Custom 2K screen breakpoint
+      },
     },
   },
   plugins: [],
