@@ -25,6 +25,7 @@ var userSchema = new mongoose.Schema(
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
+      default: "Product",
     },
     image: String,
     stock: {

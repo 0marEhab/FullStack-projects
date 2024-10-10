@@ -12,7 +12,6 @@ export default function Profile({ user }) {
 
   return (
     <>
-     
       <aside
         className={`z-20 bg-gray-700 min-h-screen w-full max-w-xs shadow-lg shadow-black fixed top-0 left-0 transition-transform duration-300 ease-in-out ${
           sidebar ? "translate-x-0" : "-translate-x-full"
@@ -48,6 +47,11 @@ export default function Profile({ user }) {
                 <Link to="/allProducts">
                   <button className="font-Playfair px-4 py-2 rounded-lg shadow-lg shadow-black text-white bg-gray-800 hover:bg-gray-900 duration-300 w-40">
                     All Products
+                  </button>
+                </Link>
+                <Link to="/allCategories">
+                  <button className="font-Playfair px-4 py-2 rounded-lg shadow-lg shadow-black text-white bg-gray-800 hover:bg-gray-900 duration-300 w-40">
+                    All Categories
                   </button>
                 </Link>
                 <Link to="/homeBanner">

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const isAuth = require("../middleware/isAuth");
 const validator = require("../middleware/product.validation");
+const categoryValidator = require("../middleware/category.validation");
 const product = require("../controllers/product.controller");
 const authorization = require("../middleware/authorization");
 
@@ -16,11 +17,34 @@ router.get(
 router.get("/getNewArrival", product.getNewArrival);
 router.get(
   "/getAllCategories",
-  isAuth,
-  authorization("admin"),
+
   product.getAllCategory
 );
-router.post("/add-category", isAuth, product.addCategory);
+router.get("/getProducts", product.getProducts);
+router.get("/products/:productName", product.getProductByName);
+router.post(
+  "/add-category",
+  isAuth,
+  cloudMulter("image"),
+  // categoryValidator.addCategory,
+  product.addCategory
+);
+
+router.put(
+  "/update-product/:id",
+  cloudMulter("image"),
+  validator.addProduct,
+  isAuth,
+  product.updateProduct
+);
+router.put(
+  "/update-category/:id",
+  cloudMulter("image"),
+
+  isAuth,
+  product.updateCategory
+);
+
 router.post(
   "/add-product",
   cloudMulter("image"),
@@ -30,5 +54,8 @@ router.post(
 );
 router.get("/getBanner", product.getAllBanners);
 router.post("/storeBanner", product.postBanner);
+router.put("/editBanner", product.editBanner);
+router.delete("/deleteProduct/:id", isAuth, product.deleteProductById);
+router.delete("/deleteCategory/:id", isAuth, product.deleteCategoryById);
 
 module.exports = router;

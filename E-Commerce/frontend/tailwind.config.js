@@ -12,6 +12,10 @@ export default {
       screens: {
         "2xl": "2499px", // Custom 2K screen breakpoint
       },
+      colors: {
+        primary: "#F0F8FF",
+        products: "#FBFCF8",
+      },
     },
   },
   plugins: [],

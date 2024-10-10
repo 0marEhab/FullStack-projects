@@ -1,0 +1,17 @@
+/* Custom scrollbar styles */
+.category-slider-container::-webkit-scrollbar {
+  height: 8px; /* Adjust height for horizontal scrollbar */
+}
+
+.category-slider-container::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+.category-slider-container::-webkit-scrollbar-thumb {
+  background: #888; /* Handle color */
+  border-radius: 10px;
+}
+
+.category-slider-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Handle color on hover */
+}

@@ -78,7 +78,7 @@ export default function ProductSection1() {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0   flex flex-col justify-end md:justify-center  mx-12 mb-8   w-[200px]  ">
-              <p className="text-black text-2xl font-bold w-[150px] mt-8 mb-4">
+              <p className="text-white md:text-black text-2xl font-bold w-[150px] mt-8 mb-4">
                 {thirdBanner ? thirdBanner.product.name : "no Title"}
               </p>
               <button className="bg-gray-800 w-[200px] text-white py-2 px-4 rounded-full hover:bg-gray-900 transition duration-300">
@@ -100,7 +100,7 @@ export default function ProductSection1() {
             />
             {/* Overlay content for the second product card */}
             <div className="absolute inset-0 hover:bg-black hover:bg-opacity-50 duration-300 flex flex-col justify-center items-center">
-              <p className="text-white text-2xl font-bold mb-4">
+              <p className="text-white text-2xl font-bold p-5 mb-4">
                 {" "}
                 {fourthBanner ? fourthBanner.product.name : "no Title"}
               </p>

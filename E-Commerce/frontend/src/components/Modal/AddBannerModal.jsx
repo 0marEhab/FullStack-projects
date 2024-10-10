@@ -6,10 +6,20 @@ import summaryApi from "../../common";
 import { tokenLoader } from "../../util/auth";
 import { toast } from "react-toastify";
 
-export default function AddProductModal({ location, products }) {
-  const [product, setProduct] = useState("");
+export default function AddBannerModal({
+  location,
+  products,
+  product: selectedProduct,
+}) {
+  const [product, setProduct] = useState(selectedProduct);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (selectedProduct) {
+      setProduct(selectedProduct);
+    }
+  }, [selectedProduct]);
 
   function handleClose() {
     dispatch(editSlice.actions.close());
@@ -61,7 +71,9 @@ export default function AddProductModal({ location, products }) {
   return (
     <Modal>
       <div className="w-[350px] md:w-[700px] flex flex-col bg-slate-200">
-        <h2 className="text-4xl m-8">Add Banner</h2>
+        <h2 className="text-4xl m-8">
+          {selectedProduct ? "Edit Banner" : "Add Banner"}
+        </h2>
         <div className="flex flex-col items-center justify-center">
           <form
             onSubmit={handleSubmit}
@@ -77,7 +89,7 @@ export default function AddProductModal({ location, products }) {
             />
             <select
               name="product"
-              value={product}
+              value={product || ""}
               onChange={(e) => setProduct(e.target.value)}
               className="w-[150px] rounded-md text-slate-400 text-lg bg-slate-800 md:w-[350px] px-4 py-1 focus:bg-slate-900 ease-in duration-100"
             >
@@ -100,7 +112,7 @@ export default function AddProductModal({ location, products }) {
               className="w-[300px] text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               disabled={loading}
             >
-              {loading ? "Saving..." : "Save"}{" "}
+              {loading ? "Saving..." : "Save"}
             </button>
           </form>
           <button

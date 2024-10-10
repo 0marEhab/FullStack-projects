@@ -9,6 +9,7 @@ const cors = require("cors");
 
 var userRouter = require("./routes/users");
 var productRouter = require("./routes/products");
+var paymentRouter = require("./routes/payment");
 
 var app = express();
 app.use(compression());
@@ -17,12 +18,12 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use("/api", userRouter);
 app.use("/api", productRouter);
+app.use("/api", paymentRouter);
 
 app.use(error.notfound);
 

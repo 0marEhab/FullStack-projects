@@ -33,6 +33,18 @@ var userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    cart: {
+      items: [
+        {
+          productId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product",
+            required: true,
+          },
+          quantity: { type: Number, required: true },
+        },
+      ],
+    },
   },
   {
     timestamps: true,
@@ -58,3 +70,6 @@ userSchema.methods.isPasswordMatched = function (password) {
 };
 
 module.exports = mongoose.model("User", userSchema);
+
+
+

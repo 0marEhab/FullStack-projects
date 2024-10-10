@@ -32,7 +32,7 @@ exports.addProduct = [
         throw new Error("Image is required");
       }
       const image = req.file;
-      const validTypes = ["image/jpeg", "image/png", "image/gif"];
+      const validTypes = ["image/jpeg", "image/png", "image/gif","image/webp"];
       if (!validTypes.includes(image.mimetype)) {
         throw new Error("Invalid image type. Only JPEG, PNG, and GIF are allowed.");
       }

@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import { Form } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { editSlice } from "../../store/editSlice";
-export default function EditModal() {
+export default function EditModal({ user }) {
   const dispatch = useDispatch();
 
   function handleEdit() {
@@ -22,6 +22,7 @@ export default function EditModal() {
             <input
               type="text"
               name="name"
+              defaultValue={user ? user.name : ""}
               placeholder="Name"
               className="w-[150px] rounded-md text-slate-400 text-lg bg-slate-800 md:w-[350px] px-4 py-1 focus:bg-slate-900 ease-in duration-100"
             />
@@ -29,12 +30,14 @@ export default function EditModal() {
             <input
               type="email"
               name="email"
+              defaultValue={user ? user.email : ""}
               placeholder="Email"
               className="w-[150px] rounded-md text-slate-400 text-lg bg-slate-800 md:w-[350px] px-4 py-1 focus:bg-slate-900 ease-in duration-100"
             />
             <input
               type="text"
               name="mobile"
+              defaultValue={user ? user.mobile : ""}
               placeholder="Mobile"
               className="w-[150px] rounded-md text-slate-400 text-lg bg-slate-800 md:w-[350px] px-4 py-1 focus:bg-slate-900 ease-in duration-100"
             />
