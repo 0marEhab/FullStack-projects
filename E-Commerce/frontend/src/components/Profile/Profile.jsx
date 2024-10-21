@@ -19,7 +19,7 @@ const Profile = () => {
 
   const deleteAction = useCallback(async () => {
     try {
-      const response = await fetch(summaryApi.delete.url, {
+      const response = await fetch(summaryApi.deleteUser.url, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${tokenLoader()}`,
@@ -47,13 +47,13 @@ const Profile = () => {
 
   return (
     <>
-      <EditModal user={user}/>
+      <EditModal user={user} />
       <Aside user={user} />
       <div className="h-screen flex flex-col items-center justify-center md:flex-row">
         <div className="w-full md:w-auto mt-5 md:mt-0 flex justify-center items-center">
           <img
             className="rounded-full mb-16 md:m-0 w-[150px] h-[150px] md:rounded-3xl md:w-[500px] md:h-[500px]"
-            src={profilePicUrl}
+            src={user.profilePic ? profilePicUrl : "/default.png"}
             alt="User avatar"
           />
         </div>

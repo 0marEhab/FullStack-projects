@@ -15,8 +15,6 @@ var userSchema = new mongoose.Schema(
     },
     mobile: {
       type: String,
-      required: true,
-      unique: true,
     },
     password: {
       type: String,
@@ -28,7 +26,7 @@ var userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
-    profilePic: String,
+    profilePic: { type: String, default: "public/images/default.png" },
     isBlocker: {
       type: Boolean,
       default: false,
@@ -70,6 +68,3 @@ userSchema.methods.isPasswordMatched = function (password) {
 };
 
 module.exports = mongoose.model("User", userSchema);
-
-
-

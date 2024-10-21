@@ -66,12 +66,6 @@ export default function Signup() {
               id="email"
             />
             <Input
-              error={errorsObj.mobile}
-              type={"text"}
-              value={"mobile"}
-              id="number"
-            />
-            <Input
               error={errorsObj.password}
               type={"password"}
               value={"password"}
@@ -82,6 +76,16 @@ export default function Signup() {
               type={"password"}
               value={"confirmPassword"}
               id="confirm-password"
+            />
+            <label className="text-lg" htmlFor="email">
+              {"phone number"}
+            </label>
+            <input
+              id={"mobile"}
+              type="number"
+              className="w-[250px] rounded-md text-slate-400 text-lg bg-slate-800 md:w-[450px] px-4 py-1 focus:bg-slate-900 ease-in duration-100"
+              placeholder="Phone Number"
+              name="mobile"
             />
             <button className="w-[250px] px-2 py-2 md:w-[450px] my-5 rounded-full text-white bg-red-600 hover:bg-red-900">
               Create
