@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import summaryApi from "../../common";
 import { useSearchParams } from "react-router-dom";
 import { tokenLoader } from "../../util/auth";
-
+import { useNavigate } from "react-router-dom";
 export default function Products() {
   const [isAsideOpen, setIsAsideOpen] = useState(false);
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [priceRange, setPriceRange] = useState(0); // New state for price range
-
+  const navigate = useNavigate();
   const categoryRef = useRef();
   const priceRef = useRef();
 
@@ -60,6 +60,8 @@ export default function Products() {
   };
 
   const handleApplyFilters = () => {
+    navigate("/products");
+    handleClearFilters();
     setQuery(
       `category=${categoryRef.current.value}&price[lte]=${priceRef.current.value}`
     );
