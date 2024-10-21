@@ -21,7 +21,11 @@ export default function Profile({ user }) {
           <div className="mt-24 mb-7 relative">
             <img
               className="rounded-full w-24 h-24 object-cover"
-              src={summaryApi.backend.url + user.profilePic}
+              src={
+                user.profilePic
+                  ? summaryApi.backend.url + user.profilePic
+                  : "/default.png"
+              }
               alt="Profile Pic"
             />
           </div>
