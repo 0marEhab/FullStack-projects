@@ -1,4 +1,4 @@
-const urlDomain = "http://localhost:3000";
+const urlDomain = "https://fullstack-projects-production.up.railway.app/";
 
 const summaryApi = {
   backend: {
@@ -19,7 +19,7 @@ const summaryApi = {
   allUsers: {
     url: `${urlDomain}/api/getAllUsers`,
   },
-  delete: {
+  deleteUser: {
     url: `${urlDomain}/api/delete`,
   },
   addProducts: {
@@ -28,8 +28,30 @@ const summaryApi = {
   allProducts: {
     url: `${urlDomain}/api/getAllProducts`,
   },
+  products: {
+    url: `${urlDomain}/api/getProducts`,
+  },
+  editProducts: {
+    url: `${urlDomain}/api/update-product`,
+  },
+  editCategory: {
+    url: `${urlDomain}/api/update-category`,
+  },
+  detailedProduct: {
+    url: `${urlDomain}/api/products`,
+  },
+  deleteProduct: {
+    url: `${urlDomain}/api/deleteProduct`,
+  },
+  deleteCategory: {
+    url: `${urlDomain}/api/deleteCategory`,
+  },
+
   getCategories: {
     url: `${urlDomain}/api/getAllCategories`,
+  },
+  AddCategory: {
+    url: `${urlDomain}/api/add-category`,
   },
   getNewArrival: {
     url: `${urlDomain}/api/getNewArrival`,
@@ -39,6 +61,21 @@ const summaryApi = {
   },
   addBanners: {
     url: `${urlDomain}/api/storeBanner`,
+  },
+  editBanners: {
+    url: `${urlDomain}/api/editBanners`,
+  },
+  getCart: {
+    url: `${urlDomain}/api/cart`,
+  },
+  addToCart: {
+    url: `${urlDomain}/api/cart`,
+  },
+  removeFromCart: {
+    url: `${urlDomain}/api/deleteFromCart`,
+  },
+  decrementCart: {
+    url: `${urlDomain}/api/decrementCart`,
   },
 };
 

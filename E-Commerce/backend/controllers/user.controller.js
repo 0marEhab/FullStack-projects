@@ -3,7 +3,6 @@ const generateToken = require("../config/generateToken");
 const { validationResult } = require("express-validator");
 
 exports.Login = async (req, res, next) => {
-  console.log(req.body);
   const { email, password } = req.body;
   let user;
   try {
@@ -169,5 +168,121 @@ exports.deleteById = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error deleting user", error: error.message });
+  }
+};
+
+exports.getCart = async (req, res) => {
+  try {
+    const userId = req.user._id;
+
+    const user = await User.findById(userId).populate("cart.items.productId");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const cartItems = user.cart.items.length ? user.cart.items : [];
+
+    res.status(200).json({ cart: cartItems });
+  } catch (error) {
+    console.error("Error fetching cart:", error);
+    res.status(500).json({ message: "Failed to fetch cart" });
+  }
+};
+
+// Add to Cart Functionality
+exports.addToCart = async (req, res) => {
+  const userId = req.user._id;
+  const { productId, quantity } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const cartProductIndex = user.cart.items.findIndex(
+      (item) => item.productId.toString() === productId
+    );
+
+    if (cartProductIndex >= 0) {
+      user.cart.items[cartProductIndex].quantity += quantity;
+    } else {
+      user.cart.items.push({ productId, quantity });
+    }
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Product added to cart", cart: user.cart.items });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+exports.decrementCartQuantity = async (req, res) => {
+  const userId = req.user._id;
+  const productId = req.params.id;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Find the index of the cart item with the matching productId
+    const cartProductIndex = user.cart.items.findIndex((item) => {
+      return item.productId.toString() === productId;
+    });
+
+    if (cartProductIndex >= 0) {
+      const cartItem = user.cart.items[cartProductIndex];
+
+      if (cartItem.quantity > 1) {
+        cartItem.quantity -= 1;
+      } else {
+        user.cart.items.splice(cartProductIndex, 1); 
+      }
+    } else {
+      return res.status(404).json({ message: "Product not found in cart" });
+    }
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Product quantity decremented", cart: user.cart });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
+
+exports.deleteFromCart = async (req, res) => {
+  const userId = req.user._id;
+  const productId = req.params.id; 
+  console.log(productId);
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.cart.items = user.cart.items.filter(
+      (item) => item.productId.toString() !== productId
+    );
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Product removed from cart", cart: user.cart });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
   }
 };

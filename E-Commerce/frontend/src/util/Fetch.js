@@ -1,5 +1,5 @@
 import { tokenLoader } from "./auth";
-import { useNavigate } from "react-router-dom";
+
 import summaryApi from "../common";
 import { toast } from "react-toastify";
 export default async function Fetch(url, method, tokenbool = false) {
@@ -31,9 +31,9 @@ export default async function Fetch(url, method, tokenbool = false) {
   }
 }
 
-export const Delete = async function (id) {
+export const Delete = async function (url, id) {
   try {
-    const response = await fetch(`${summaryApi.delete.url}/${id}`, {
+    const response = await fetch(`${url}/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${tokenLoader()}`,
@@ -41,13 +41,40 @@ export const Delete = async function (id) {
     });
 
     if (!response.ok) {
-      toast.error("Could not delete the account");
+      const errorMessage = await response.text();
+      console.error("Delete error:", errorMessage);
+      toast.error("Action didn't complete successfully");
       return;
     }
 
-    toast.success("Account deleted successfully");
+    toast.success("deleted successfully");
   } catch (error) {
-    toast.error("An error occurred while deleting the account");
-    console.error("Delete action error:", error);
+    console.error("Delete failed:", error);
+    toast.error("An error occurred while deleting ");
+  }
+};
+
+export const Update = async function (url, id, updatedProduct) {
+  try {
+    const response = await fetch(`${url}/${id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${tokenLoader()}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      console.error("Update error:", errorMessage);
+      toast.error("Action didn't complete successfully");
+      return response;
+    }
+
+    toast.success("Product updated successfully");
+    return response;
+  } catch (error) {
+    console.error("Update failed:", error);
   }
 };

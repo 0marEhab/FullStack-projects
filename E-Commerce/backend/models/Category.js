@@ -8,6 +8,7 @@ var userSchema = new mongoose.Schema(
       trim: true,
       minlength: 1,
     },
+    image: String,
   },
   {
     timestamps: true,

@@ -20,8 +20,18 @@ router.post(
   validator.signup,
   userController.Signup
 );
-router.put("/editEmail", isAuth, multer("profilePic"), validator.signup, userController.edit);
+router.put(
+  "/editEmail",
+  isAuth,
+  multer("profilePic"),
+  validator.signup,
+  userController.edit
+);
 router.delete("/delete", isAuth, userController.Delete);
 router.delete("/delete/:id", isAuth, userController.deleteById);
+router.post("/cart", isAuth, userController.addToCart);
+router.get("/cart", isAuth, userController.getCart);
+router.patch("/decrementCart/:id", isAuth, userController.decrementCartQuantity);
+router.delete("/deleteFromCart/:id", isAuth, userController.deleteFromCart);
 
 module.exports = router;

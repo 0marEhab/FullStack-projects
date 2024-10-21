@@ -8,7 +8,7 @@ export default function UsersTable({ users }) {
   const user = useLoaderData();
 
   const deleteAction = async (userId) => {
-    await Delete(userId);
+    await Delete(summaryApi.deleteUser.url,userId);
     setUserList((prevUsers) => prevUsers.filter((user) => user._id !== userId));
   };
 

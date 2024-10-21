@@ -16,7 +16,12 @@ const LazySignup = React.lazy(() => import("./pages/Signup"));
 const LazyLogin = React.lazy(() => import("./pages/Login"));
 const LazyUsersTable = React.lazy(() => import("./pages/UserTable"));
 const LazyProductsTable = React.lazy(() => import("./pages/ProductTable.jsx"));
+const LazyCategoryTable = React.lazy(() =>
+  import("./pages/Category/CategoryTable.jsx")
+);
 const LazyProducts = React.lazy(() => import("./pages/Products.jsx"));
+const LazyDetailedProducts = React.lazy(() => import("./pages/Details.jsx"));
+const LazyCart = React.lazy(() => import("./pages/Cart/Cart.jsx"));
 
 import { action as editAction } from "./pages/Profile.jsx";
 import { action as signupAction } from "./pages/Signup";
@@ -31,6 +36,7 @@ const combinedLoader = async () => {
   const [user, homeData] = await Promise.all([userFetch(), homeLoader()]);
   return { user, homeData };
 };
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -97,10 +103,37 @@ const router = createBrowserRouter([
         loader: userFetch,
       },
       {
+        path: "/allCategories",
+
+        element: (
+          <React.Suspense fallback={<Spinner />}>
+            <LazyCategoryTable />
+          </React.Suspense>
+        ),
+        loader: userFetch,
+      },
+      {
         path: "/products",
         element: (
           <React.Suspense fallback={<Spinner />}>
             <LazyProducts />
+          </React.Suspense>
+        ),
+      },
+      {
+        path: "/cart",
+        element: (
+          <React.Suspense fallback={<Spinner />}>
+            <LazyCart />
+          </React.Suspense>
+        ),
+        loader: userFetch,
+      },
+      {
+        path: "/products/:productName",
+        element: (
+          <React.Suspense fallback={<Spinner />}>
+            <LazyDetailedProducts />
           </React.Suspense>
         ),
       },

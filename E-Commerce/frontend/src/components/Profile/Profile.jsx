@@ -47,7 +47,7 @@ const Profile = () => {
 
   return (
     <>
-      <EditModal />
+      <EditModal user={user}/>
       <Aside user={user} />
       <div className="h-screen flex flex-col items-center justify-center md:flex-row">
         <div className="w-full md:w-auto mt-5 md:mt-0 flex justify-center items-center">
