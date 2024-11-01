@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`bg-white shadow-lg w-full z-10 font-Dm fixed top-0 transition-transform duration-300 ${
+      className={`bg-white shadow-lg w-full z-10 lg:z-20 font-Dm fixed top-0 transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <h1 className="text-xl font-bold">
-              <img src="/LOGO.png" alt="Logo" />
+              <img loading="lazy" src="/LOGO.png" alt="Logo" />
             </h1>
           </div>
           {/* Menu button for small screens */}

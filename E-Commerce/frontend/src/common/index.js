@@ -1,4 +1,4 @@
-const urlDomain = "https://fullstack-projects-production.up.railway.app";
+const urlDomain = "http://localhost:3000/";
 
 const summaryApi = {
   backend: {

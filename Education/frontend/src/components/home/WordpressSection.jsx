@@ -2,8 +2,13 @@ import React from "react";
 import { Button } from "../ui/button";
 export default function WordpressSection() {
   return (
-    <div className="flex   relative justify-center md:w-[1400px] items-center mx-auto  mt-16  ">
-      <img src="/Mask.png" alt="" className=" h-[300px] w-full md:h-[400px] blur-sm" />
+    <div className="flex   relative justify-center lg:w-[1400px] items-center mx-auto  mt-16  ">
+      <img
+        loading="lazy"
+        src="/Mask.png"
+        alt=""
+        className=" h-[300px] w-full md:h-[400px] blur-sm"
+      />
       <div className="flex-1 absolute md:w-full w-[300px] text-center items-center">
         <h2 className="text-lg font-Dm md:text-xl font-bold text-gray-700 mb-2">
           PROVIDING AMAZING

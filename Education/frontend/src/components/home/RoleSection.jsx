@@ -2,7 +2,7 @@ import React from "react";
 
 export default function RoleSection() {
   return (
-    <div className="relative justify-center md:w-[1400px] h-[300px] mx-auto mt-16 mb-20">
+    <div className="relative justify-center lg:w-[1400px] h-[300px] mx-auto mt-16 mb-20">
       {/* Background Image */}
 
       {/* Content Overlay */}
@@ -11,7 +11,7 @@ export default function RoleSection() {
         <div className="flex items-center  space-x-4">
           {/* Icon */}
           <div className="bg-white p-5 item rounded-full">
-            <img src="/student.png" alt="Student Icon" className=" h-6 w-6  md:h-14 md:w-14" />
+            <img loading="lazy" src="/student.png" alt="Student Icon" className=" h-6 w-6  md:h-14 md:w-14" />
           </div>
           {/* Text */}
           <h2 className="text-2xl font-semibold text-gray-800">

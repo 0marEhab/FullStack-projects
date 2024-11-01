@@ -5,7 +5,9 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="overflow-hidden">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

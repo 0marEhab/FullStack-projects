@@ -14,7 +14,7 @@ export default function ({ instructor, title, weeks, students, price, type }) {
   return (
     <Card className=" md:w-[400px] h-[460px]   rounded-3xl  hover:text-primary hover:shadow-lg hover:-translate-y-4 duration-200 hover:shadow-slate-300">
       <div className="flex relative flex-col justify-center items-center gap-5 w-full">
-        <img src={course1} alt="" className="w-full" />
+        <img src={course1} alt="" className="w-full h-[240px]" />
         <Badge variant="secondary" className={"absolute top-2 left-5 "}>
           {type}
         </Badge>
@@ -32,7 +32,7 @@ export default function ({ instructor, title, weeks, students, price, type }) {
           </div>
           <div className="flex gap-3 w-full items-center">
             <img src="/time.png" alt="" />
-            <p>{weeks}</p>
+            <p>{weeks} Week</p>
             <img src="/students.png" alt="" />
             <p>{students} Student</p>
           </div>

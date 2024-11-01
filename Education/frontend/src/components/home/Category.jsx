@@ -4,11 +4,11 @@ import CategroyCard from "./CategroyCard";
 export default function Category() {
   return (
     <>
-      <div className="flex md:ml-[300px] mt-10 md:text-start text-center flex-col gap-3 ">
+      <div className="flex lg:ml-[300px] mt-10 lg:text-start text-center flex-col gap-3 ">
         <h1 className="text-3xl font-bold ">Top Categories</h1>
         <p>Explore our Popular Categories</p>
       </div>
-      <div className="flex mx-auto md:w-[1400px] justify-center  items-center gap-6 mt-10 flex-wrap">
+      <div className="flex mx-auto lg:w-[1400px] justify-center  items-center gap-6 mt-10 flex-wrap">
         <CategroyCard title={"Art & Design"} img="/Group0.png" />
         <CategroyCard title={"Development"} img="/Group.png" />
         <CategroyCard title={"Communitcation"} img="/Group1.png" />

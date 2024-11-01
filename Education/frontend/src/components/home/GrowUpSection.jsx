@@ -3,10 +3,10 @@ import { Button } from "../ui/button";
 
 export default function GrowUpSection() {
   return (
-    <div className="flex justify-center p-2 mx-auto gap-16 mt-20 flex-col md:flex-row md:w-[1300px]">
-      <img src="/humans.png" alt="humans.png" />
-      <div className="flex flex-col md:py-20 text-center md:text-start justify-center items-center p-5 md:justify-start md:items-start">
-        <p className="text-3xl md:text-4xl font-semibold w-[350px]">
+    <div className="flex justify-center p-2 mx-auto gap-16 mt-20 flex-col lg:flex-row lg:w-[1300px]">
+      <img loading="lazy" src="/humans.png" alt="humans.png" />
+      <div className="flex flex-col lg:py-20 text-center lg:text-start justify-center items-center p-5 lg:justify-start lg:items-start">
+        <p className="text-3xl lg:text-4xl font-semibold w-[350px]">
           Grow us your skill with LearnPress LMS
         </p>
         <p className="mt-10 text-gray-600">
@@ -16,7 +16,7 @@ export default function GrowUpSection() {
         <p className="mt-10">
           <span>&#10003;</span> Certification
         </p>
-        <Button variant="default" size={"lg"} className={"md:mt-16 mt-5"} >Explorer course</Button>
+        <Button variant="default" size={"lg"} className={"lg:mt-16 mt-5"} >Explorer course</Button>
       </div>
     </div>
   );

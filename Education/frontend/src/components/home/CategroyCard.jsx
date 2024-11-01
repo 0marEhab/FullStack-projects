@@ -19,7 +19,9 @@ export default function CategroyCard({ title, img }) {
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
 
-          <CardTitle className={"text-center text-md md:text-lg"}>{title}</CardTitle>
+          <CardTitle className={"text-center text-md md:text-lg"}>
+            {title}
+          </CardTitle>
         </div>
       </CardHeader>
       <CardContent>
