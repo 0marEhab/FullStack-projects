@@ -88,7 +88,7 @@ export default function Courses() {
           <div className="mt-16 mb-3 flex flex-col gap-5 justify-center items-center md:justify-start md:items-start">
             {sampleCourses.map((c) => {
               return (
-                <Link to={`/singleCourse/${c.title}`}>
+                <Link to={`/singleCourse`}>
                   <CoursesCard
                     instructor={c.instructor}
                     title={c.title}
